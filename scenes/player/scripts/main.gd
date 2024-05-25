@@ -15,7 +15,7 @@ var DEFAULT_DIRECTION = 'down'
 
 @onready var use_reach = 10
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	_get_input()
 	_get_direction()
 	_handle_use_hitbox_direction()

@@ -12,8 +12,11 @@ func _ready():
 			child.state_transition.connect(change_state)
 
 	if initial_state:
-		call_deferred('initial_state.Enter')
+		call_deferred('_init_state')
 		current_state = initial_state
+
+func _init_state():
+	initial_state.Enter()
 
 func  _physics_process(delta): # TODO: Should this be _physics or just _process
 	if current_state:
