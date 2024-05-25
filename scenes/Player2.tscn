@@ -1,11 +1,6 @@
-[gd_scene load_steps=23 format=3 uid="uid://b0xyv7h6eho2a"]
+[gd_scene load_steps=16 format=3 uid="uid://wuw2ab3qncpw"]
 
-[ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="1_md2ya"]
-[ext_resource type="Script" path="res://scenes/player/scripts/main.gd" id="1_u0ca5"]
-[ext_resource type="Script" path="res://scenes/player/scripts/idle_state.gd" id="2_ivc8t"]
-[ext_resource type="Texture2D" uid="uid://4nqrtl2ov7dp" path="res://assets/player/universal_sprite.png" id="2_vjjc5"]
-[ext_resource type="Script" path="res://scenes/player/scripts/walk_state.gd" id="3_m6xxc"]
-[ext_resource type="Script" path="res://scenes/player/scripts/run_state.gd" id="4_0pa3q"]
+[ext_resource type="Texture2D" uid="uid://4nqrtl2ov7dp" path="res://assets/player/universal_sprite.png" id="1_6rg47"]
 
 [sub_resource type="Animation" id="Animation_3mesi"]
 resource_name = "walk_left"
@@ -243,15 +238,10 @@ _data = {
 "walk_up": SubResource("Animation_g265m")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_220ml"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_yakv4"]
-
-[node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_u0ca5")
+[node name="Player2" type="CharacterBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_vjjc5")
+texture = ExtResource("1_6rg47")
 hframes = 13
 vframes = 46
 frame = 117
@@ -260,24 +250,3 @@ frame = 117
 libraries = {
 "": SubResource("AnimationLibrary_akx5f")
 }
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_220ml")
-
-[node name="UseArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UseArea"]
-shape = SubResource("CircleShape2D_yakv4")
-
-[node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("1_md2ya")
-initial_state = NodePath("idle")
-
-[node name="idle" type="Node2D" parent="StateMachine"]
-script = ExtResource("2_ivc8t")
-
-[node name="walk" type="Node2D" parent="StateMachine"]
-script = ExtResource("3_m6xxc")
-
-[node name="run" type="Node2D" parent="StateMachine"]
-script = ExtResource("4_0pa3q")

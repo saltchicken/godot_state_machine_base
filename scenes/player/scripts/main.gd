@@ -1,6 +1,6 @@
 extends CharacterBody2D
 @onready var state_machine = $StateMachine
-@onready var animated_sprite = $AnimatedSprite2D
+@onready var animated_sprite = $AnimationPlayer
 @onready var use_hitbox = $UseArea
 
 var DEFAULT_DIRECTION = 'down'
@@ -29,7 +29,7 @@ func _get_input():
 func _get_direction():
 	if movement:
 		if movement.x < 0 and movement.y == 0:
-			direction = 'left' #TODO: This is right because animation is hardcoded right. Change to lateral
+			direction = 'left'
 		elif movement.x > 0 and movement.y == 0:
 			direction = 'right'
 		elif movement.y < 0 and movement.x == 0:
