@@ -1,11 +1,22 @@
-extends Node
+extends State
 
+@onready var character_body = self.get_owner()
+@export var sprite : AnimatedSprite2D
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+var SPEED = 100.0
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func Enter():
+	character_body._run()	
+	
+func Exit():
 	pass
+	
+func Update(_delta:float):
+	if character_body.movement:
+		if !character_body.run:
+			state_transition.emit(self, 'walk')
+		else:
+			character_body.velocity.x = character_body.movement.x * SPEED
+			character_body.velocity.y = character_body.movement.y * SPEED
+	else:
+		state_transition.emit(self, 'idle')
