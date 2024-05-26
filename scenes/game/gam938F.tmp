@@ -8,7 +8,7 @@
 [node name="Player" parent="." instance=ExtResource("1_iqfig")]
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(2, 2)
+zoom = Vector2(4, 4)
 
 [node name="Slime" parent="." instance=ExtResource("2_wylly")]
 position = Vector2(194, 28)

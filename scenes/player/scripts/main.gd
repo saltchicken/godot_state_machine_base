@@ -15,11 +15,14 @@ var DEFAULT_DIRECTION = 'down'
 
 @onready var use_reach = 10
 
-func _physics_process(_delta):
+func _ready():
+	add_to_group('Players')
+
+func _physics_process(delta):
 	_get_input()
 	_get_direction()
 	_handle_use_hitbox_direction()
-	move_and_slide()
+	move_and_collide(self.velocity * delta)
 
 func _get_input():
 	movement = Input.get_vector("left", "right", "up", "down")
